@@ -184,11 +184,13 @@ struct FloatType
 {
     float* value;
 
+   FloatType(float fVal) : value(new float(fVal)) {}
     ~FloatType()
     {
         delete value;
         value = nullptr;
     }
+    
     float add(float lhs, float rhs);
     float subtract(float lhs, float rhs);
     float multiply(float lhs, float rhs);
@@ -223,6 +225,7 @@ struct DoubleType
 {
     double* value;
 
+    DoubleType(double dVal) : value(new double(dVal)) {}
     ~DoubleType()
     {
         delete value;
@@ -263,6 +266,7 @@ struct IntType
 {
     int* value;
 
+    IntType(int iVal) : value(new int(iVal)) {}
     ~IntType()
     {
         delete value;
