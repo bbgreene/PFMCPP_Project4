@@ -125,8 +125,8 @@ struct FloatType
     FloatType& multiply(float rhs);
     FloatType& divide(float rhs);
 
-    private:
-        float* value = nullptr;
+private:
+    float* value = nullptr;
 };
 
 struct DoubleType
@@ -145,8 +145,8 @@ struct DoubleType
     DoubleType& multiply(double rhs);
     DoubleType& divide(double rhs);
 
-    private:
-        double* value = nullptr;
+private:
+    double* value = nullptr;
 };
 
 struct IntType
@@ -165,8 +165,8 @@ struct IntType
     IntType& multiply(int rhs);
     IntType& divide(int rhs);  
 
-    private:
-        int* value = nullptr;
+private:
+    int* value = nullptr;
 };
 
 //--------
