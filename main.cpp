@@ -137,6 +137,8 @@ struct FloatType
         value = nullptr;
     }
     
+    operator float() { return *value; }
+
     FloatType& add(float rhs);
     FloatType& subtract(float rhs);
     FloatType& multiply(float rhs);
@@ -154,6 +156,8 @@ struct DoubleType
         value = nullptr;
     }
 
+    operator double() { return *value; }
+
     DoubleType& add(double rhs);
     DoubleType& subtract(double rhs);
     DoubleType& multiply(double rhs);
@@ -170,6 +174,8 @@ struct IntType
         delete value;
         value = nullptr;
     }
+
+    operator int() { return *value; }
 
     IntType& add(int rhs);
     IntType& subtract(int rhs);
