@@ -284,9 +284,15 @@ struct FloatType
     FloatType& subtract(float rhs);
     FloatType& multiply(float rhs);
     FloatType& divide(float rhs);
+    FloatType& pow(const FloatType& rhs);
+    FloatType& pow(const DoubleType& rhs);
+    FloatType& pow(const IntType& rhs);
+    FloatType& pow(float rhs);
+    
 
 private:
     float* value = nullptr;
+    FloatType& powInternal(float rhs);
 };
 
 struct DoubleType
@@ -304,9 +310,14 @@ struct DoubleType
     DoubleType& subtract(double rhs);
     DoubleType& multiply(double rhs);
     DoubleType& divide(double rhs);
+    DoubleType& pow(const FloatType& rhs);
+    DoubleType& pow(const DoubleType& rhs);
+    DoubleType& pow(const IntType& rhs);
+    DoubleType& pow(double rhs);
 
 private:
     double* value = nullptr;
+    DoubleType& powInternal(double rhs);
 };
 
 struct IntType
@@ -323,10 +334,15 @@ struct IntType
     IntType& add(int rhs);
     IntType& subtract(int rhs);
     IntType& multiply(int rhs);
-    IntType& divide(int rhs);  
+    IntType& divide(int rhs);
+    IntType& pow(const FloatType& rhs);
+    IntType& pow(const DoubleType& rhs);
+    IntType& pow(const IntType& rhs);
+    IntType& pow(int rhs);  
 
 private:
     int* value = nullptr;
+    IntType& powInternal(int rhs);
 };
 
 //--------
