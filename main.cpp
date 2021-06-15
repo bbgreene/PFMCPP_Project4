@@ -376,6 +376,33 @@ FloatType& FloatType::divide(float rhs)
     return *this;
 }
 
+FloatType& FloatType::pow(float rhs)
+{
+    return powInternal(rhs);
+}
+
+FloatType& FloatType::pow(const FloatType& rhs)
+{
+    return powInternal(static_cast<float>(rhs));
+}
+
+FloatType& FloatType::pow(const DoubleType& rhs)
+{
+    return powInternal(static_cast<float>(static_cast<double>(rhs)));
+}
+
+FloatType& FloatType::pow(const IntType& rhs)
+{
+    return powInternal(static_cast<float>(static_cast<int>(rhs)));
+}
+
+FloatType& FloatType::powInternal(float rhs)
+{
+    if (value != nullptr) *value = std::pow(*value, rhs);
+    return *this;
+}
+
+
 //------------
 
 DoubleType& DoubleType::add(double rhs)
@@ -404,6 +431,32 @@ DoubleType& DoubleType::divide(double rhs)
     if(value != nullptr) 
         *value /= rhs;
 
+    return *this;
+}
+
+DoubleType& DoubleType::pow(double rhs)
+{
+    return powInternal(rhs);
+}
+
+DoubleType& DoubleType::pow(const FloatType& rhs)
+{
+    return powInternal(static_cast<double>(static_cast<float>(rhs)));
+}
+
+DoubleType& DoubleType::pow(const DoubleType& rhs)
+{
+    return powInternal(static_cast<double>(rhs));
+}
+
+DoubleType& DoubleType::pow(const IntType& rhs)
+{
+    return powInternal(static_cast<double>(static_cast<int>(rhs)));
+}
+
+DoubleType& DoubleType::powInternal(double rhs)
+{
+    if (value != nullptr) *value = std::pow(*value, rhs);
     return *this;
 }
 
@@ -439,6 +492,32 @@ IntType& IntType::divide(int rhs)
     if(value != nullptr) 
         *value /= rhs;
         
+    return *this;
+}
+
+IntType& IntType::pow(int rhs)
+{
+    return powInternal(rhs);
+}
+
+IntType& IntType::pow(const FloatType& rhs)
+{
+    return powInternal(static_cast<int>(static_cast<float>(rhs)));
+}
+
+IntType& IntType::pow(const DoubleType& rhs)
+{
+    return powInternal(static_cast<int>(static_cast<double>(rhs)));
+}
+
+IntType& IntType::pow(const IntType& rhs)
+{
+    return powInternal(static_cast<int>(rhs));
+}
+
+IntType& IntType::powInternal(int rhs)
+{
+    if (value != nullptr) *value = static_cast<int>(std::pow(*value, rhs));
     return *this;
 }
 
