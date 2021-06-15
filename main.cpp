@@ -264,6 +264,7 @@ struct HeapA
 };
 
 #include <iostream>
+#include <cmath>
 
 struct FloatType;
 struct DoubleType;
