@@ -192,7 +192,6 @@ struct FloatType
     FloatType& pow(const IntType& rhs);
     FloatType& pow(float rhs);
     
-
 private:
     float* value = nullptr;
     FloatType& powInternal(float rhs);
