@@ -185,10 +185,10 @@ struct FloatType
     
     operator float() const { return *value; }
 
-    FloatType& add(float rhs);
-    FloatType& subtract(float rhs);
-    FloatType& multiply(float rhs);
-    FloatType& divide(float rhs);
+    FloatType& operator+=(float rhs);
+    FloatType& operator-=(float rhs);
+    FloatType& operator*=(float rhs);
+    FloatType& operator/=(float rhs);
     FloatType& pow(const FloatType& rhs);
     FloatType& pow(const DoubleType& rhs);
     FloatType& pow(const IntType& rhs);
@@ -210,10 +210,10 @@ struct DoubleType
 
     operator double() const { return *value; }
 
-    DoubleType& add(double rhs);
-    DoubleType& subtract(double rhs);
-    DoubleType& multiply(double rhs);
-    DoubleType& divide(double rhs);
+    DoubleType& operator+=(double rhs);
+    DoubleType& operator-=(double rhs);
+    DoubleType& operator*=(double rhs);
+    DoubleType& operator/=(double rhs);
     DoubleType& pow(const FloatType& rhs);
     DoubleType& pow(const DoubleType& rhs);
     DoubleType& pow(const IntType& rhs);
@@ -235,10 +235,10 @@ struct IntType
 
     operator int() const { return *value; }
 
-    IntType& add(int rhs);
-    IntType& subtract(int rhs);
-    IntType& multiply(int rhs);
-    IntType& divide(int rhs);
+    IntType& operator+=(int rhs);
+    IntType& operator-=(int rhs);
+    IntType& operator*=(int rhs);
+    IntType& operator/=(int rhs);
     IntType& pow(const FloatType& rhs);
     IntType& pow(const DoubleType& rhs);
     IntType& pow(const IntType& rhs);
@@ -251,25 +251,25 @@ private:
 
 //--------
 
-FloatType& FloatType::add(float rhs)
+FloatType& FloatType::operator+=(float rhs)
 {
     *value += rhs;
     return *this;
 }
 
-FloatType& FloatType::subtract(float rhs)
+FloatType& FloatType::operator-=(float rhs)
 {
     *value -= rhs;
     return *this;
 }
 
-FloatType& FloatType::multiply(float rhs)
+FloatType& FloatType::operator*=(float rhs)
 {
     *value *= rhs;
     return *this;
 }
 
-FloatType& FloatType::divide(float rhs)
+FloatType& FloatType::operator/=(float rhs)
 {
     if(rhs == 0.0f) 
         std::cout << "warning: floating point division by zero!" << std::endl;
@@ -309,25 +309,25 @@ FloatType& FloatType::powInternal(float rhs)
 
 //------------
 
-DoubleType& DoubleType::add(double rhs)
+DoubleType& DoubleType::operator+=(double rhs)
 {
     *value += rhs;
     return *this;
 }
 
-DoubleType& DoubleType::subtract(double rhs)
+DoubleType& DoubleType::operator-=(double rhs)
 {
     *value -= rhs;
     return *this;
 }
 
-DoubleType& DoubleType::multiply(double rhs)
+DoubleType& DoubleType::operator*=(double rhs)
 {
     *value *= rhs;
     return *this;
 }
 
-DoubleType& DoubleType::divide(double rhs)
+DoubleType& DoubleType::operator/=(double rhs)
 {
     if(rhs == 0.0) 
         std::cout << "warning: floating point division by zero!" << std::endl;
@@ -366,25 +366,25 @@ DoubleType& DoubleType::powInternal(double rhs)
 
 //-----------
 
-IntType& IntType::add(int rhs)
+IntType& IntType::operator+=(int rhs)
 {
     *value += rhs;
     return *this;
 }
 
-IntType& IntType::subtract(int rhs)
+IntType& IntType::operator-=(int rhs)
 {
     *value -= rhs;
     return *this;
 }
 
-IntType& IntType::multiply(int rhs)
+IntType& IntType::operator*=(int rhs)
 {
     *value *= rhs;
     return *this;
 }
 
-IntType& IntType::divide(int rhs)
+IntType& IntType::operator/=(int rhs)
 {
     if(rhs == 0)
     {
