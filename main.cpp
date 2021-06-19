@@ -29,6 +29,7 @@ Do not delete your previous main.
  5) delete the example below after it makes sense how your code will change due to 1).
  */
 
+/*
 namespace Example
 {
     int main()
@@ -37,13 +38,13 @@ namespace Example
         IntType intNum(2);
         IntType intNum2(6);
 
-        /* 
+         
         if you previously had a line like this demonstrating chaining:
             
             intNum.add(3).add(4.5f).divide(floatNum); 
 
         it should become:
-        */
+        
         intNum += 3;
         intNum += 4.5f;
         intNum /= floatNum;
@@ -52,8 +53,8 @@ namespace Example
         return 0;
     }
 }
+/*
 
- /*
  6) compile/link/run to make sure you don't have any errors or warnings.
 
  7) your program should produce the exact same output as Project 4 part 4, listed below.
@@ -161,6 +162,11 @@ good to go!
 Use a service like https://www.diffchecker.com/diff to compare your output. 
 */
 
+#include <iostream>
+#include <cmath>
+
+struct DoubleType;
+struct IntType;
 
 struct A {};
 
