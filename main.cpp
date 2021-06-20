@@ -212,14 +212,14 @@ struct FloatType
     FloatType& apply(std::function<FloatType&(float&)> stdFunc)
     {
         if(stdFunc)
-            return stdFunc(*value)
+            return stdFunc(*value);
         return *this;
     }
 
     FloatType& apply(void(*funcP)(float&))
     {
         if(funcP)
-            return funcP(*value)
+            return funcP(*value);
         return *this;
     }
     
@@ -251,14 +251,14 @@ struct DoubleType
     DoubleType& apply(std::function<DoubleType&(double&)> stdFunc)
     {
         if(stdFunc)
-            return stdFunc(*value)
+            return stdFunc(*value);
         return *this;
     }
 
     DoubleType& apply(void(*funcP)(double&))
     {
         if(funcP)
-            return funcP(*value)
+            return funcP(*value);
         return *this;
     }
 
@@ -290,14 +290,14 @@ struct IntType
     IntType& apply(std::function<IntType&(int&)> stdFunc)
     {
         if(stdFunc)
-            return stdFunc(*value)
+            return stdFunc(*value);
         return *this;
     }
 
     IntType& apply(void(*funcP)(int&))
     {
         if(funcP)
-            return funcP(*value)
+            return funcP(*value);
         return *this;
     }
 
@@ -657,6 +657,11 @@ void part4()
     std::cout << "---------------------\n" << std::endl;
 }
 
+void myFloatFreeFunct(float& f)
+{
+    f += 7.0f;
+}
+
 void part6()
 {
     FloatType ft3(3.0f);
@@ -665,7 +670,7 @@ void part6()
     
     std::cout << "Calling FloatType::apply() using a lambda (adds 7.0f) and FloatType as return type:" << std::endl;
     std::cout << "ft3 before: " << ft3 << std::endl;
-    ft3.apply( [](){} );
+    ft3.apply( [&](float&) ->FloatType& {return ft3 += 7.0f;});
     std::cout << "ft3 after: " << ft3 << std::endl;
     std::cout << "Calling FloatType::apply() using a free function (adds 7.0f) and void as return type:" << std::endl;
     std::cout << "ft3 before: " << ft3 << std::endl;
