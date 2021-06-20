@@ -219,7 +219,7 @@ struct FloatType
     FloatType& apply(void(*funcP)(float&))
     {
         if(funcP)
-            return funcP(*value);
+            funcP(*value);
         return *this;
     }
     
@@ -258,7 +258,7 @@ struct DoubleType
     DoubleType& apply(void(*funcP)(double&))
     {
         if(funcP)
-            return funcP(*value);
+            funcP(*value);
         return *this;
     }
 
@@ -297,7 +297,7 @@ struct IntType
     IntType& apply(void(*funcP)(int&))
     {
         if(funcP)
-            return funcP(*value);
+            funcP(*value);
         return *this;
     }
 
@@ -669,7 +669,7 @@ void myDoubleFreeFunct(double& d)
 
 void myIntFreeFunct(int& i)
 {
-    i += 6;
+    i += 5;
 }
 
 
