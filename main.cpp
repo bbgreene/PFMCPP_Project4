@@ -242,6 +242,20 @@ struct FloatType
     FloatType& pow(const DoubleType& rhs);
     FloatType& pow(const IntType& rhs);
     FloatType& pow(float rhs);
+
+    FloatType& apply(std::function<FloatType&(float&)> stdFunc)
+    {
+        if(stdFunc)
+            return stdFunc(*value)
+        return *this;
+    }
+
+    FloatType& apply(void(*funcP)(float&))
+    {
+        if(funcP)
+            return funcP(*value)
+        return *this;
+    }
     
 private:
     float* value = nullptr;
@@ -268,6 +282,20 @@ struct DoubleType
     DoubleType& pow(const IntType& rhs);
     DoubleType& pow(double rhs);
 
+    DoubleType& apply(std::function<DoubleType&(double&)> stdFunc)
+    {
+        if(stdFunc)
+            return stdFunc(*value)
+        return *this;
+    }
+
+    DoubleType& apply(void(*funcP)(double&))
+    {
+        if(funcP)
+            return funcP(*value)
+        return *this;
+    }
+
 private:
     double* value = nullptr;
     DoubleType& powInternal(double rhs);
@@ -292,6 +320,20 @@ struct IntType
     IntType& pow(const DoubleType& rhs);
     IntType& pow(const IntType& rhs);
     IntType& pow(int rhs);  
+
+    IntType& apply(std::function<IntType&(int&)> stdFunc)
+    {
+        if(stdFunc)
+            return stdFunc(*value)
+        return *this;
+    }
+
+    IntType& apply(void(*funcP)(int&))
+    {
+        if(funcP)
+            return funcP(*value)
+        return *this;
+    }
 
 private:
     int* value = nullptr;
